@@ -2,6 +2,7 @@ package com.localize.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Bairro implements Serializable {
 	private Long id;
 	
 	@NotEmpty(message = "nome é Obrigatorio")
+	@Column(unique = true, nullable = false)
 	private String name;
 	
 	public Bairro() {

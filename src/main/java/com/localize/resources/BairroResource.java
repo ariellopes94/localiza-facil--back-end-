@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.localize.domain.Bairro;
+import com.localize.repositories.BairroRepository;
 import com.localize.services.BairroService;
 
 @RestController
@@ -22,6 +23,9 @@ public class BairroResource  {
 	
 	@Autowired
 	private BairroService bairroService;
+	
+	@Autowired
+	private BairroRepository bairroRepository;
 	
 	@GetMapping
 	public String bairros() {
@@ -36,5 +40,10 @@ public class BairroResource  {
 				buildAndExpand(obj.getId()).toUri();
 		
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@GetMapping("/totalFarmacias")
+	public long famarciaTotal () {
+		return bairroRepository.count();
 	}
 }

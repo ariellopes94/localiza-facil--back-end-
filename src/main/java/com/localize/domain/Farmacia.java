@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tbl_drugstores")
 public class Farmacia implements Serializable {
@@ -42,12 +45,14 @@ public class Farmacia implements Serializable {
 	
 
 	@NotNull(message = "O campo bairro localizado, é obrigatorio")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="id_neighborhood")
 	private Bairro bairroLocalizado;
 	
 	
 	@NotNull(message = "O campo Data, é obrigatorio")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="foundation_date")
 	private Date dataFundacao;
 	

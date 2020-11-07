@@ -7,4 +7,10 @@ import com.localize.domain.Farmacia;
 
 @Repository
 public interface FarmaciaRepository extends JpaRepository<Farmacia, Long> {
+	
+	// Farmacia findByNameIgnoreCase(String name);
+	
+	Farmacia findByNameIgnoreCase(String name);
+	//boolean existsByName(String nome);
+	//List<Farmacia> findTop2ByNameContaining(String nome);
 }
