@@ -1,0 +1,13 @@
+USE localizafacil;
+insert into tbl_neighborhoods (name) values ('Acupe');
+insert into tbl_neighborhoods (name) values ('Aeroporto');
+insert into tbl_neighborhoods (name) values ('Águas Claras');
+insert into tbl_neighborhoods (name) values ('Alto do Cabrito');
+insert into tbl_neighborhoods (name) values ('Alto da Terezinha');
+insert into tbl_neighborhoods (name) values ('Alto das Pombas');
+insert into tbl_neighborhoods (name) values ('Alto do Coqueirinho');
+insert into tbl_neighborhoods (name) values ('Amaralina');
+insert into tbl_neighborhoods (name) values ('Areia Branca');
+insert into tbl_neighborhoods (name) values ('Arenoso');
+insert into tbl_neighborhoods (name) values ('Arraial do Retiro');
+insert into tbl_neighborhoods (name) values ('Bairro da Paz');
