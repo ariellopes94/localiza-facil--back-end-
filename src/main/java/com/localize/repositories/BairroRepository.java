@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.localize.domain.Bairro;
 
 @Repository
-public interface BairroRepository extends JpaRepository<Bairro, Integer> {
+public interface BairroRepository extends JpaRepository<Bairro, Long> {
 
 	//@Transactional(readOnly =true)
 	Optional<Bairro> findByNameIgnoreCase(String name);

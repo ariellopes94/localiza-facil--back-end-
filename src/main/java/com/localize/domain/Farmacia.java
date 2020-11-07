@@ -22,7 +22,7 @@ public class Farmacia implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	//@JsonInclude(JsonInclude.Include.NON_NULL)// Quando a a variavel for Null ela nao retorna pra tela
 	@NotEmpty(message = "O campo nome, é obrigatorio")
@@ -55,11 +55,11 @@ public class Farmacia implements Serializable {
 	}
 	
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

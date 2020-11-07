@@ -23,12 +23,12 @@ public class BairroService {
 		 
 		 //String removerAcentos = removeAccents(bairro.getName());
 		 
-		Boolean palavraJaExiste;
+	//	Boolean palavraJaExiste;
 		
-		 palavraJaExiste = bairroRepository.findByNameIgnoreCase(removeAccents(bairro.getName())).isPresent();
+		// palavraJaExiste = ;
 		 
 		
-		if(palavraJaExiste.equals(true)) {
+		if(bairroRepository.findByNameIgnoreCase(removeAccents(bairro.getName())).isPresent() == true) {
 			throw new BairroExistenteException("Bairro já Existe");
 		
 		}

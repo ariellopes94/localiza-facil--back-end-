@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.localize.domain.Farmacia;
 
 @Repository
-public interface FarmaciaRepository extends JpaRepository<Farmacia, Integer> {
+public interface FarmaciaRepository extends JpaRepository<Farmacia, Long> {
 }
