@@ -1,0 +1,17 @@
+USE localizafacil;
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("1994-10-25", true, 'Walmart Pharmacy', 3);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("1994-10-25", false, 'Publix Pharmacies', 3);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("1994-10-25", true, 'Costco Pharmacies', 2);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("1994-10-25", true, 'DrogaClaudio', 2);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("1994-10-25", true, 'Droga Linda', 6);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'Esperta Farma', 8);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", true, 'Bella Farma', 5);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'Econofarma', 8);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'Drogaria Céu Azul', 5);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", true, 'EspaçoDesconto', 8);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'Desconto SulFarma', 5);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'A Econômica da Sônia', 5);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'BeaFarma', 4);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", true, 'AppFarma', 1);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", false, 'DrogaMel', 5);
+insert into tbl_drugstores (foundation_date, flg_round_the_clock, name, id_neighborhood) values ("2020-10-25", true, 'MePoFarma', 5);
