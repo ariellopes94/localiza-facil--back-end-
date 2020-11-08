@@ -26,7 +26,7 @@ import com.localize.services.FarmaciaService;
 import com.localize.services.exceptions.FarmaciaNaoPodeSerExcluidaException;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200") //Resolvendo error de cross-origin local
+@CrossOrigin //Resolvendo error de cross-origin local
 @RequestMapping(value = "farmacia")
 public class FarmaciaResources {
 	
@@ -50,6 +50,12 @@ public class FarmaciaResources {
 	public ResponseEntity<FarmaciaDto> findById(@PathVariable Long id){
 		Farmacia obj = farmaciaService.findById(id);
 		return ResponseEntity.ok().body(farmaciaModelAssembler.modelFarmaciaToFarmaciaDto(obj));	
+	}
+	
+	@GetMapping(value="/farmaciasPorLocalidade")
+	public List<Farmacia> BuscarPorLocalidade(Long bairroId, boolean faramacia24Horas){
+		List<Farmacia> obj = farmaciaService.buscarFarmaciasPorBairro(bairroId, faramacia24Horas);
+		return obj;	
 	}
 	
 	@PutMapping(value = "/{id}")   
@@ -76,5 +82,10 @@ public class FarmaciaResources {
 			
 		farmaciaService.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping(value="/buscarFarmacia")
+	public List<Farmacia> farmaciaContains(String nome){	
+		return farmaciaService.findByFarmaciaContains(nome);
 	}
 }

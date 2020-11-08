@@ -44,10 +44,20 @@ public class FarmaciaService {
 			 return farmacia;
 		}
 	
+	@Transactional
+	public List<Farmacia> buscarFarmaciasPorBairro(Long bairroId ,boolean faramacia24Horas) {
+		   List<Farmacia> obj = farmaciaRepository.findByBairroLocalizadoIdAndFarmacia24Horas(bairroId,faramacia24Horas);
+		   
+		   if(obj.isEmpty() == true) {
+			   throw new ObjectNotFoundException("Não existe farmacia nesse bairro");
+		   }
+			 return obj;
+		}
+	
+	
 	public void edit(Farmacia famarcia) {
 		
 		findById(famarcia.getId());
-		
 	
 		Farmacia obj = farmaciaRepository.findByNameIgnoreCase(famarcia.getName());
 		
@@ -55,7 +65,6 @@ public class FarmaciaService {
 			throw new ObjetoExistenteException("Farmacia já Existe");
 		}
 	
-	//	System.out.println(farmaciaRepository.existsByName(famarcia.getName()));
 		farmaciaRepository.save(famarcia);
 	}
 	
@@ -78,5 +87,17 @@ public class FarmaciaService {
 		if(obj != null) {
 			throw new ObjetoExistenteException("Farmacia já Existe");
 		}
+	}
+	
+	public List<Farmacia> findByFarmaciaContains(String nome){
+		
+		 List<Farmacia> obj = farmaciaRepository.findTop6ByNameContaining(nome);
+		 
+		 
+		 
+		   if(obj.isEmpty() == true) {
+			   throw new ObjectNotFoundException("Não contem Farmacia com o nome Informado");
+		   }
+			 return obj;
 	}
 }

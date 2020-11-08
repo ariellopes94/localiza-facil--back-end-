@@ -2,13 +2,11 @@ package com.localize.services;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localize.domain.Bairro;
-import com.localize.domain.Farmacia;
 import com.localize.repositories.BairroRepository;
 import com.localize.services.exceptions.ObjectNotFoundException;
 import com.localize.services.exceptions.ObjetoExistenteException;
@@ -48,7 +46,7 @@ public class BairroService {
 	public List<Bairro> findByBairroContains(String nome){
 		
 		 List<Bairro> obj = bairroRepository.findTop6ByNameContaining(nome);
-		   if(obj == null) {
+		   if(obj.isEmpty() == true) {
 			   throw new ObjectNotFoundException("Não contem bairro com o nome Informado");
 		   }
 			 return obj;
