@@ -1,11 +1,13 @@
 package com.localize.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.localize.domain.Bairro;
 import com.localize.domain.Farmacia;
 import com.localize.domain.assembler.FarmaciaModelAssembler;
 import com.localize.domain.dto.FarmaciaDto;
@@ -23,6 +26,7 @@ import com.localize.services.FarmaciaService;
 import com.localize.services.exceptions.FarmaciaNaoPodeSerExcluidaException;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200") //Resolvendo error de cross-origin local
 @RequestMapping(value = "farmacia")
 public class FarmaciaResources {
 	
@@ -53,6 +57,11 @@ public class FarmaciaResources {
 		farmacia.setId(id);
 		farmaciaService.edit(farmacia);	
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping
+	public List<Farmacia> list() {
+		return farmaciaService.findByAll();
 	}
 	
 	@DeleteMapping(value = "{id}")

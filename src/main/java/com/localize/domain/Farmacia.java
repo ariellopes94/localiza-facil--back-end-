@@ -76,8 +76,8 @@ public class Farmacia implements Serializable {
 		this.name = name;
 	}
 
-	public boolean getFarmacia24Horas() {
-		return farmacia24Horas;
+	public String getFarmacia24Horas() {
+		return (farmacia24Horas == true) ? "Sim" : "Não";
 	}
 
 	public void setFarmacia24Horas(boolean farmacia24Horas) {

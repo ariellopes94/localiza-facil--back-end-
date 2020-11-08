@@ -1,14 +1,16 @@
 package com.localize.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.localize.domain.Bairro;
 import com.localize.domain.Farmacia;
 import com.localize.repositories.FarmaciaRepository;
-import com.localize.services.exceptions.FarmaciaNaoEncontradoException;
+import com.localize.services.exceptions.ObjectNotFoundException;
 import com.localize.services.exceptions.ObjetoExistenteException;
 
 @Service
@@ -37,7 +39,7 @@ public class FarmaciaService {
 		   Farmacia farmacia =  obj.orElse(null);
 		   
 		   if(farmacia == null) {
-			   throw new FarmaciaNaoEncontradoException("A Farmacia não pôde ser encontrado.");
+			   throw new ObjectNotFoundException("A Farmacia não pôde ser encontrado.");
 		   }
 			 return farmacia;
 		}
@@ -55,6 +57,16 @@ public class FarmaciaService {
 	
 	//	System.out.println(farmaciaRepository.existsByName(famarcia.getName()));
 		farmaciaRepository.save(famarcia);
+	}
+	
+	
+	public List<Farmacia> findByAll(){
+		
+		 List<Farmacia> obj = farmaciaRepository.findAll();
+		   if(obj == null) {
+			   throw new ObjectNotFoundException("Não contem Farmacia");
+		   }
+			 return obj;
 	}
 	
 

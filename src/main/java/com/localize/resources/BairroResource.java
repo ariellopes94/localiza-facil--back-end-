@@ -1,12 +1,15 @@
 package com.localize.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,7 @@ import com.localize.domain.Bairro;
 import com.localize.repositories.BairroRepository;
 import com.localize.services.BairroService;
 
+@CrossOrigin //Resolvendo error de cross-origin local
 @RestController
 @RequestMapping(value = "bairro")
 public class BairroResource  {
@@ -27,11 +31,6 @@ public class BairroResource  {
 	@Autowired
 	private BairroRepository bairroRepository;
 	
-	@GetMapping
-	public String bairros() {
-		return "Testando Rest";
-	}
-
 	@PostMapping
 	public ResponseEntity<Bairro> create(@Valid @RequestBody Bairro bairro){
 		Bairro obj = bairroService.create(bairro);
@@ -42,8 +41,20 @@ public class BairroResource  {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@GetMapping
+	public List<Bairro> list() {
+		return bairroRepository.findAll();
+	}
+	
 	@GetMapping("/totalFarmacias")
 	public long famarciaTotal () {
 		return bairroRepository.count();
+	}
+	
+	
+	
+	@GetMapping(value="/buscarPessoa")
+	public List<Bairro> bairrosContains(String nome){	
+		return bairroService.findByBairroContains(nome);
 	}
 }

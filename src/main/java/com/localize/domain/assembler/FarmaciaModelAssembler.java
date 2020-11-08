@@ -11,10 +11,11 @@ public class FarmaciaModelAssembler {
 	public FarmaciaDto modelFarmaciaToFarmaciaDto (Farmacia obj) {
 		FarmaciaDto farmacia = new FarmaciaDto();
 		
+		boolean objGetFarmacia24Horas = (obj.getFarmacia24Horas() == "Sim") ? true : false;
 		farmacia.setId(obj.getId());
 		farmacia.setFundadaMaisDe1Ano(true);
 		farmacia.setName(obj.getName());
-		farmacia.setFarmacia24Horas(obj.getFarmacia24Horas());
+		farmacia.setFarmacia24Horas(objGetFarmacia24Horas);
 		farmacia.setBairroLocalizado(obj.getBairroLocalizado());
 		farmacia.setDataFundacao(obj.getDataFundacao());
 		

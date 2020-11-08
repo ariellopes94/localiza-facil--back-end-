@@ -1,10 +1,16 @@
 package com.localize.services;
 
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localize.domain.Bairro;
+import com.localize.domain.Farmacia;
 import com.localize.repositories.BairroRepository;
+import com.localize.services.exceptions.ObjectNotFoundException;
 import com.localize.services.exceptions.ObjetoExistenteException;
 
 @Service
@@ -18,9 +24,6 @@ public class BairroService {
 	
 	public Bairro create(Bairro bairro) {
 		bairro.setId(null);	
-		
-		//System.out.println("VALIDAR " + bairroRepository.findByNameIgnoreCase(uteisService.removeAccents(bairro.getName())).isPresent());
-		
 		Bairro obj = bairroRepository.findByNameIgnoreCase(uteisService.removeAccents(bairro.getName()));
 		 
 		if(obj != null) {
@@ -31,6 +34,25 @@ public class BairroService {
 		return bairroRepository.save(bairro);
 	}
 	
+	public List<Bairro> findByAll(){
+		
+		 List<Bairro> obj = bairroRepository.findAll();
+		 
+		   
+		   if(obj == null) {
+			   throw new ObjectNotFoundException("Não contem bairros");
+		   }
+			 return obj;
+	}
+	
+	public List<Bairro> findByBairroContains(String nome){
+		
+		 List<Bairro> obj = bairroRepository.findTop6ByNameContaining(nome);
+		   if(obj == null) {
+			   throw new ObjectNotFoundException("Não contem bairro com o nome Informado");
+		   }
+			 return obj;
+	}
 	
 	
 }
